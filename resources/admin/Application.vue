@@ -56,18 +56,6 @@
                     {
                         route: 'logs',
                         title: this.$t('Email Logs')
-                    },
-                    {
-                        route: 'notification_settings',
-                        title: this.$t('Alerts')
-                    },
-                    {
-                        route: 'support',
-                        title: this.$t('About')
-                    },
-                    {
-                        route: 'docs',
-                        title: this.$t('Documentation')
                     }
                 ];
             },
