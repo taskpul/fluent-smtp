@@ -21,11 +21,11 @@ class AdminSettingsNavigationHandler
     protected $targetHook = 'settings_page_fluent-mail';
 
     /**
-     * Hidden route configuration for the FluentSMTP SPA.
+     * Restricted route configuration for the FluentSMTP SPA.
      *
      * @var array<int, array<string, array<int, string>|string>>
      */
-    protected $routesToHide = [
+    protected $routesToRemove = [
         [
             'index'  => 'notification_settings',
             'hashes' => ['#/notification-settings', '#/notification-settings/'],
@@ -70,7 +70,6 @@ class AdminSettingsNavigationHandler
             return;
         }
 
-        $this->injectStyles();
         $this->injectScripts();
     }
 
@@ -83,6 +82,10 @@ class AdminSettingsNavigationHandler
     protected function shouldHandleRequest($hookSuffix)
     {
         if (!is_admin()) {
+            return false;
+        }
+
+        if (!current_user_can('manage_options')) {
             return false;
         }
 
@@ -100,42 +103,13 @@ class AdminSettingsNavigationHandler
     }
 
     /**
-     * Inject inline CSS to visually hide disallowed menu entries.
-     *
-     * @return void
-     */
-    protected function injectStyles()
-    {
-        $selectors = [];
-
-        foreach ($this->routesToHide as $config) {
-            $selectors[] = '.fluent-mail-navigation [index="' . sanitize_key($config['index']) . '"]';
-        }
-
-        $css  = implode(",\n", $selectors) . " {\n    display: none !important;\n}";
-        $css .= "\n.fluent-mail-navigation .fluentsmtp-menu-guard-hidden {\n    display: none !important;\n}\n";
-
-        if (wp_style_is('fluent_mail_admin_app', 'enqueued')) {
-            wp_add_inline_style('fluent_mail_admin_app', $css);
-            return;
-        }
-
-        if (!wp_style_is('fluentsmtp-admin-menu-guard', 'registered')) {
-            wp_register_style('fluentsmtp-admin-menu-guard', false);
-        }
-
-        wp_enqueue_style('fluentsmtp-admin-menu-guard');
-        wp_add_inline_style('fluentsmtp-admin-menu-guard', $css);
-    }
-
-    /**
      * Inject inline JavaScript to guard the SPA navigation.
      *
      * @return void
      */
     protected function injectScripts()
     {
-        $routesJson = wp_json_encode($this->routesToHide);
+        $routesJson = wp_json_encode($this->routesToRemove);
 
         if (!$routesJson) {
             return;
@@ -146,59 +120,35 @@ class AdminSettingsNavigationHandler
     var restrictedRoutes = {$routesJson};
     var fallbackHash = '#/connections';
 
-    function hideMenuItems() {
-        var navigation = document.querySelector('.fluent-mail-navigation');
-        if (!navigation) {
-            return;
+    function normalizeHash(hash) {
+        if (!hash) {
+            return '';
         }
 
-        restrictedRoutes.forEach(function(config) {
-            var selector = '[index="' + config.index + '"]';
-            Array.prototype.forEach.call(navigation.querySelectorAll(selector), function(item) {
-                if (item.getAttribute('data-fluentsmtp-guarded') === '1') {
-                    return;
-                }
-
-                item.classList.add('fluentsmtp-menu-guard-hidden');
-                item.setAttribute('aria-hidden', 'true');
-                item.setAttribute('tabindex', '-1');
-                item.setAttribute('data-fluentsmtp-guarded', '1');
-                item.addEventListener('click', preventNavigation, true);
-
-                var link = item.querySelector('a');
-                if (link) {
-                    link.setAttribute('tabindex', '-1');
-                    link.setAttribute('aria-hidden', 'true');
-                    link.addEventListener('click', preventNavigation, true);
-                }
-            });
-        });
-    }
-
-    function preventNavigation(event) {
-        if (event) {
-            if (typeof event.preventDefault === 'function') {
-                event.preventDefault();
-            }
-            if (typeof event.stopImmediatePropagation === 'function') {
-                event.stopImmediatePropagation();
-            }
+        var normalized = String(hash).toLowerCase();
+        if (normalized.charAt(0) !== '#') {
+            normalized = '#' + normalized.replace(/^#+/, '');
         }
 
-        guardNavigation();
+        if (normalized.length > 1 && normalized.slice(-1) === '/') {
+            normalized = normalized.slice(0, -1);
+        }
+
+        return normalized;
     }
 
-    function guardNavigation() {
-        var currentHash = (window.location.hash || '').toLowerCase();
+    function isRestrictedHash(targetHash) {
+        if (!targetHash) {
+            return false;
+        }
+
+        var normalizedTarget = normalizeHash(targetHash);
 
         for (var i = 0; i < restrictedRoutes.length; i++) {
             var hashes = restrictedRoutes[i].hashes || [];
 
             for (var j = 0; j < hashes.length; j++) {
-                if (currentHash === hashes[j]) {
-                    if (currentHash !== fallbackHash) {
-                        window.location.hash = fallbackHash;
-                    }
+                if (normalizedTarget === normalizeHash(hashes[j])) {
                     return true;
                 }
             }
@@ -207,19 +157,109 @@ class AdminSettingsNavigationHandler
         return false;
     }
 
-    function boot() {
-        hideMenuItems();
-        guardNavigation();
+    function redirectIfRestricted() {
+        var currentHash = normalizeHash(window.location.hash || '');
 
-        var navigationWrapper = document.querySelector('.fluent-mail-main-menu-items');
-        if (navigationWrapper && window.MutationObserver) {
-            var observer = new MutationObserver(function() {
-                hideMenuItems();
-            });
-            observer.observe(navigationWrapper, { childList: true, subtree: true });
+        if (!isRestrictedHash(currentHash)) {
+            return false;
         }
 
-        window.addEventListener('hashchange', guardNavigation, false);
+        if (currentHash !== normalizeHash(fallbackHash)) {
+            window.location.hash = fallbackHash;
+        }
+
+        return true;
+    }
+
+    function removeNavigationEntries() {
+        var navigationRoots = document.querySelectorAll('.fluent-mail-navigation');
+
+        if (!navigationRoots.length) {
+            return;
+        }
+
+        restrictedRoutes.forEach(function(config) {
+            if (!config || !config.index) {
+                return;
+            }
+
+            var selector = '.fluent-mail-navigation .el-menu-item[index="' + config.index + '"]';
+            var nodes = document.querySelectorAll(selector);
+
+            if (!nodes.length) {
+                return;
+            }
+
+            Array.prototype.forEach.call(nodes, function(node) {
+                if (!node) {
+                    return;
+                }
+
+                if (typeof node.remove === 'function') {
+                    node.remove();
+                    return;
+                }
+
+                if (node.parentNode) {
+                    node.parentNode.removeChild(node);
+                }
+            });
+        });
+    }
+
+    function onMutations() {
+        removeNavigationEntries();
+        redirectIfRestricted();
+    }
+
+    function attachObserver(target) {
+        if (!target || !window.MutationObserver) {
+            return;
+        }
+
+        var observer = new MutationObserver(onMutations);
+        observer.observe(target, { childList: true, subtree: true });
+    }
+
+    function watchForAppRoot() {
+        if (!window.MutationObserver) {
+            return;
+        }
+
+        var existingRoot = document.querySelector('.fluent-mail-app');
+
+        if (existingRoot) {
+            attachObserver(existingRoot);
+            return;
+        }
+
+        var fallbackTarget = document.body || document.documentElement;
+
+        if (!fallbackTarget) {
+            return;
+        }
+
+        var bootstrapObserver = new MutationObserver(function() {
+            var candidate = document.querySelector('.fluent-mail-app');
+
+            if (!candidate) {
+                return;
+            }
+
+            attachObserver(candidate);
+            bootstrapObserver.disconnect();
+        });
+
+        bootstrapObserver.observe(fallbackTarget, { childList: true, subtree: true });
+    }
+
+    function boot() {
+        removeNavigationEntries();
+        redirectIfRestricted();
+
+        watchForAppRoot();
+
+        window.addEventListener('hashchange', redirectIfRestricted, false);
     }
 
     if (document.readyState === 'loading') {
