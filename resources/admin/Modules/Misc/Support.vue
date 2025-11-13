@@ -6,13 +6,13 @@
                     <div class="fss_header">About</div>
                     <div class="fss_content">
                         <p>
-                            <a :href="appVars.plugin_url" target="_blank" rel="noopener">FluentSMTP</a> <span> </span>{{ $t('__ABOUT_INTRO') }}
+                            <a :href="appVars.plugin_url" target="_blank" rel="noopener">WebSMTP</a> <span> </span>{{ $t('__ABOUT_INTRO') }}
                         </p>
                         <p>
                             {{ $t('__ABOUT_BY') }}
                         </p>
                         <div>
-                            <p>{{ $t('FluentSMTP is built using the following open-source libraries and software') }}</p>
+                            <p>{{ $t('WebSMTP is built using the following open-source libraries and software') }}</p>
                             <ul style="list-style: disc;margin-left: 30px;">
                                 <li>VueJS</li>
                                 <li>ChartJS</li>

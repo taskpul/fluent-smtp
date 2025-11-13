@@ -862,7 +862,7 @@
             $hints   = $details->getFileName() . ':' . $details->getStartLine();
             ?>
 <div class="notice notice-warning fluentsmtp_urgent is-dismissible">
-    <p>The <strong>FluentSMTP</strong> plugin depends on <a target="_blank" href="https://developer.wordpress.org/reference/functions/wp_mail/">wp_mail</a> pluggable function and plugin is not able to extend it. Please check if another plugin is using this and disable it for <strong>FluentSMTP</strong> to work!</p>
+    <p>The <strong>WebSMTP</strong> plugin depends on <a target="_blank" href="https://developer.wordpress.org/reference/functions/wp_mail/">wp_mail</a> pluggable function and plugin is not able to extend it. Please check if another plugin is using this and disable it for <strong>WebSMTP</strong> to work!</p>
     <p style="color: red;">
         <?php esc_html_e('Possible Conflict: ', 'fluent-smtp');?>
         <?php echo $hints; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>

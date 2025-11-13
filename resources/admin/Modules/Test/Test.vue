@@ -73,7 +73,7 @@
                 <el-button v-else @click="email_success = false" v-else>{{ $t('Run Another Test Email') }}</el-button>
 
                 <div v-if="appVars.require_optin != 'yes'" style="margin-top: 50px;">
-                    {{ $t('If you have a minute, consider ') }} <a target="_blank" href="https://wordpress.org/support/plugin/fluent-smtp/reviews/?filter=5">{{ $t('write a review for FluentSMTP') }}</a>
+                    {{ $t('If you have a minute, consider ') }} <a target="_blank" href="https://wordpress.org/support/plugin/fluent-smtp/reviews/?filter=5">{{ $t('write a review for WebSMTP') }}</a>
                 </div>
 
             </div>

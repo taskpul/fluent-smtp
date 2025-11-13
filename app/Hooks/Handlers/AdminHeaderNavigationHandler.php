@@ -14,7 +14,7 @@ class AdminHeaderNavigationHandler
     protected $app;
 
     /**
-     * Target admin hook for the FluentSMTP settings screen.
+     * Target admin hook for the WebSMTP settings screen.
      *
      * @var string
      */
@@ -32,7 +32,7 @@ class AdminHeaderNavigationHandler
     ];
 
     /**
-     * Restricted hash routes within the FluentSMTP SPA.
+     * Restricted hash routes within the WebSMTP SPA.
      *
      * @var array<int, string>
      */
@@ -68,7 +68,7 @@ class AdminHeaderNavigationHandler
     }
 
     /**
-     * Conditionally enqueue inline assets for the FluentSMTP screen.
+     * Conditionally enqueue inline assets for the WebSMTP screen.
      *
      * @param string $hookSuffix
      * @return void

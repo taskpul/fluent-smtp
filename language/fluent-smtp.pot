@@ -1,7 +1,7 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FluentSMTP\n"
+"Project-Id-Version: WebSMTP\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-07 12:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -33,39 +33,39 @@ msgid " connection."
 msgstr ""
 
 #: app/Services/Mailer/Providers/config.php:71
-msgid " for how to configure Amazon SES with FluentSMTP."
+msgid " for how to configure Amazon SES with WebSMTP."
 msgstr ""
 
 #: app/Services/Mailer/Providers/config.php:29
-msgid " for how to configure any SMTP with FluentSMTP."
+msgid " for how to configure any SMTP with WebSMTP."
 msgstr ""
 
 #: app/Services/Mailer/Providers/config.php:176
-msgid " for how to configure Elastic Email with FluentSMTP."
+msgid " for how to configure Elastic Email with WebSMTP."
 msgstr ""
 
 #: app/Services/Mailer/Providers/config.php:88
-msgid " for how to configure Mailgun with FluentSMTP."
+msgid " for how to configure Mailgun with WebSMTP."
 msgstr ""
 
 #: app/Services/Mailer/Providers/config.php:144
-msgid " for how to configure Netcore (formerly Pepipost) with FluentSMTP."
+msgid " for how to configure Netcore (formerly Pepipost) with WebSMTP."
 msgstr ""
 
 #: app/Services/Mailer/Providers/config.php:161
-msgid " for how to configure Postmark with FluentSMTP."
+msgid " for how to configure Postmark with WebSMTP."
 msgstr ""
 
 #: app/Services/Mailer/Providers/config.php:102
-msgid " for how to configure SendGrid with FluentSMTP."
+msgid " for how to configure SendGrid with WebSMTP."
 msgstr ""
 
 #: app/Services/Mailer/Providers/config.php:116
-msgid " for how to configure Sendinblue with FluentSMTP."
+msgid " for how to configure Sendinblue with WebSMTP."
 msgstr ""
 
 #: app/Services/Mailer/Providers/config.php:130
-msgid " for how to configure SparkPost with FluentSMTP."
+msgid " for how to configure SparkPost with WebSMTP."
 msgstr ""
 
 #: app/Services/TransStrings.php:13
@@ -488,7 +488,7 @@ msgid "Configure Discord Notification"
 msgstr ""
 
 #: app/Hooks/Handlers/AdminMenuHandler.php:292
-msgid "Configure FluentSMTP"
+msgid "Configure WebSMTP"
 msgstr ""
 
 #: app/Services/TransStrings.php:349
@@ -883,12 +883,12 @@ msgid "Filter"
 msgstr ""
 
 #: app/Hooks/Handlers/AdminMenuHandler.php:350
-msgid "Fluent SMTP"
+msgid "WebSMTP"
 msgstr ""
 
 #: app/Models/Traits/SendTestEmailTrait.php:13
 #, php-format
-msgid "Fluent SMTP: Test Email - %s"
+msgid "WebSMTP: Test Email - %s"
 msgstr ""
 
 #: app/Services/TransStrings.php:121
@@ -897,58 +897,58 @@ msgstr ""
 
 #. Name of the plugin
 #: app/Hooks/Handlers/AdminMenuHandler.php:109
-msgid "FluentSMTP"
+msgid "WebSMTP"
 msgstr ""
 
 #. Author of the plugin
-msgid "FluentSMTP & WPManageNinja Team"
+msgid "WebSMTP & WPManageNinja Team"
 msgstr ""
 
 #: app/Services/TransStrings.php:122
-msgid "FluentSMTP does not store your email notifications data."
+msgid "WebSMTP does not store your email notifications data."
 msgstr ""
 
 #: app/Services/TransStrings.php:123
-msgid "FluentSMTP does not store your email notifications data. "
+msgid "WebSMTP does not store your email notifications data. "
 msgstr ""
 
 #: app/views/admin/digest_email.php:7
-msgid "FluentSMTP Email Health Report"
+msgid "WebSMTP Email Health Report"
 msgstr ""
 
 #: app/views/admin/email_html.php:30
-msgid "FluentSMTP is a free opensource plugin and it will be always free "
+msgid "WebSMTP is a free opensource plugin and it will be always free "
 msgstr ""
 
 #: app/Services/TransStrings.php:124
 msgid ""
-"FluentSMTP is built using the following open-source libraries and software"
+"WebSMTP is built using the following open-source libraries and software"
 msgstr ""
 
 #: app/Services/TransStrings.php:286
 msgid ""
-"FluentSMTP is free and will be always free. This is our pledge to WordPress "
+"WebSMTP is free and will be always free. This is our pledge to WordPress "
 "community from WPManageNinja LLC."
 msgstr ""
 
 #: app/Services/TransStrings.php:287
 msgid ""
-"FluentSMTP is powered by community. We listen to our community users and "
+"WebSMTP is powered by community. We listen to our community users and "
 "build products that add value to businesses and save time."
 msgstr ""
 
 #: app/Services/TransStrings.php:290
 msgid ""
-"FluentSMTP is powered by its users like you. Feel free to contribute on "
+"WebSMTP is powered by its users like you. Feel free to contribute on "
 "Github. Thanks to all of our contributors."
 msgstr ""
 
 #: app/Hooks/Handlers/AdminMenuHandler.php:287
-msgid "FluentSMTP needs to be configured for it to work."
+msgid "WebSMTP needs to be configured for it to work."
 msgstr ""
 
 #: app/views/admin/email_html.php:7
-msgid "FluentSMTP Test Email"
+msgid "WebSMTP Test Email"
 msgstr ""
 
 #: app/Services/TransStrings.php:125
@@ -988,7 +988,7 @@ msgid "Follow this link to get an API Key:"
 msgstr ""
 
 #: app/Hooks/Handlers/AdminMenuHandler.php:81
-msgid "For SMTP, you already have FluentSMTP Installed"
+msgid "For SMTP, you already have WebSMTP Installed"
 msgstr ""
 
 #: app/Services/TransStrings.php:131
@@ -1069,7 +1069,7 @@ msgstr ""
 #, php-format
 msgid ""
 "Get real-time notifications on your %1$s for any email sending failures. "
-"Configure notifications with FluentSMTP's official %2$s to start receiving "
+"Configure notifications with WebSMTP's official %2$s to start receiving "
 "real-time alerts."
 msgstr ""
 
@@ -1099,7 +1099,7 @@ msgid "Go to Fluent Forms Dashboard"
 msgstr ""
 
 #: app/Hooks/filters.php:17
-msgid "Go to Fluent SMTP Settings page"
+msgid "Go to WebSMTP Settings page"
 msgstr ""
 
 #: app/Http/Controllers/SettingsController.php:319
@@ -1107,7 +1107,7 @@ msgid "Go to FluentCRM Dashboard"
 msgstr ""
 
 #: app/Hooks/Handlers/AdminMenuHandler.php:85
-msgid "Go To FluentSMTP Settings"
+msgid "Go To WebSMTP Settings"
 msgstr ""
 
 #: app/Http/Controllers/SettingsController.php:323
@@ -1248,7 +1248,7 @@ msgstr ""
 msgid ""
 "is a free and open-source WordPress Plugin. Our mission is to provide the "
 "ultimate email delivery solution with your favorite Email sending service. "
-"FluentSMTP is built for performance and speed."
+"WebSMTP is built for performance and speed."
 msgstr ""
 
 #: app/Services/TransStrings.php:302
@@ -2175,13 +2175,13 @@ msgstr ""
 
 #: app/Services/TransStrings.php:342
 msgid ""
-"Thank you for installing FluentSMTP - The ultimate SMTP & Email Service "
+"Thank you for installing WebSMTP - The ultimate SMTP & Email Service "
 "Connection Plugin for WordPress"
 msgstr ""
 
 #: app/views/admin/email_html.php:30
 msgid ""
-"Thank you for using Fluent SMTP Plugin. The ultimate SMTP plugin you need "
+"Thank you for using WebSMTP Plugin. The ultimate SMTP plugin you need "
 "for making sure your emails are delivered."
 msgstr ""
 
@@ -2247,7 +2247,7 @@ msgstr ""
 
 #: app/Hooks/Handlers/AdminMenuHandler.php:86
 msgid ""
-"This notice is from FluentSMTP plugin to prevent plugin\n"
+"This notice is from WebSMTP plugin to prevent plugin\n"
 "                    conflict."
 msgstr ""
 
@@ -2368,7 +2368,7 @@ msgid "Wednesday"
 msgstr ""
 
 #: app/Services/TransStrings.php:343
-msgid "Welcome to FluentSMTP"
+msgid "Welcome to WebSMTP"
 msgstr ""
 
 #: app/Services/TransStrings.php:304
@@ -2380,8 +2380,8 @@ msgstr ""
 #: app/Hooks/Handlers/AdminMenuHandler.php:280
 #, php-format
 msgid ""
-"WordPress version 5.5 or greater is required for FluentSMTP. You are using "
-"version %s currently. Please update your WordPress Core to use FluentSMTP "
+"WordPress version 5.5 or greater is required for WebSMTP. You are using "
+"version %s currently. Please update your WordPress Core to use WebSMTP "
 "Plugin."
 msgstr ""
 
@@ -2390,7 +2390,7 @@ msgid "Write a review (really appreciated 😊)"
 msgstr ""
 
 #: app/Services/TransStrings.php:358 app/views/admin/email_html.php:53
-msgid "write a review for FluentSMTP"
+msgid "write a review for WebSMTP"
 msgstr ""
 
 #: app/Hooks/Handlers/AdminMenuHandler.php:236
@@ -2420,13 +2420,13 @@ msgstr ""
 #: app/views/admin/digest_email.php:200
 msgid ""
 "You received this email because the Email Sending Health Report is enabled "
-"in your FluentSMTP settings. Simply turn it off to stop these emails at "
+"in your WebSMTP settings. Simply turn it off to stop these emails at "
 msgstr ""
 
 #: app/Hooks/Handlers/AdminMenuHandler.php:82
 msgid ""
 "You seem to be looking for an SMTP plugin, but there's no need for another "
-"one — FluentSMTP is already installed on your site. FluentSMTP is a "
+"one — WebSMTP is already installed on your site. WebSMTP is a "
 "comprehensive, free, and open-source plugin with full features available "
 "without any upsell"
 msgstr ""
@@ -2460,7 +2460,7 @@ msgstr ""
 #: app/Services/TransStrings.php:329
 #, php-format
 msgid ""
-"Your FluentSMTP plugin is currently integrated with Telegram. Receive timely "
+"Your WebSMTP plugin is currently integrated with Telegram. Receive timely "
 "notifications from %s on Telegram for any email sending issues from your "
 "website. This ongoing connection ensures you're always informed about your "
 "email delivery status."
@@ -2468,7 +2468,7 @@ msgstr ""
 
 #: app/Services/TransStrings.php:296
 msgid ""
-"Your FluentSMTP plugin is currently integrated with your Discord Channel. "
+"Your WebSMTP plugin is currently integrated with your Discord Channel. "
 "Receive timely notifications on Discord for any email sending issues from "
 "your website. This ongoing connection ensures you're always informed about "
 "your email delivery status."
@@ -2476,7 +2476,7 @@ msgstr ""
 
 #: app/Services/TransStrings.php:324
 msgid ""
-"Your FluentSMTP plugin is currently integrated with your Slack Channel. "
+"Your WebSMTP plugin is currently integrated with your Slack Channel. "
 "Receive timely notifications on Slack for any email sending issues from your "
 "website. This ongoing connection ensures you're always informed about your "
 "email delivery status."

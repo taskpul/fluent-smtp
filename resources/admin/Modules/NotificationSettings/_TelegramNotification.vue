@@ -21,7 +21,7 @@
                             {{ $t('Continue') }}
                         </el-button>
                     </el-form-item>
-                    <p>{{ $t('FluentSMTP does not store your email notifications data.') }}</p>
+                    <p>{{ $t('WebSMTP does not store your email notifications data.') }}</p>
                 </el-form>
             </div>
             <div v-else-if="configure_state == 'pin'">

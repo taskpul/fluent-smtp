@@ -22,7 +22,7 @@
                             {{ $t('Continue to Slack') }}
                         </el-button>
                     </el-form-item>
-                    <p>{{ $t('FluentSMTP does not store your email notifications data. ')}} <a target="_blank" rel="noopener" href="https://fluentsmtp.com/docs/email-sending-error-notification-slack/">{{ $t('Read the documentation') }}</a>.</p>
+                    <p>{{ $t('WebSMTP does not store your email notifications data. ')}} <a target="_blank" rel="noopener" href="https://fluentsmtp.com/docs/email-sending-error-notification-slack/">{{ $t('Read the documentation') }}</a>.</p>
                 </el-form>
             </div>
         </div>
