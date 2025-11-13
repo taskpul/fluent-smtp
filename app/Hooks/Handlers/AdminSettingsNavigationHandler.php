@@ -14,14 +14,14 @@ class AdminSettingsNavigationHandler
     protected $app;
 
     /**
-     * Target admin hook for the FluentSMTP settings screen.
+     * Target admin hook for the WebSMTP settings screen.
      *
      * @var string
      */
     protected $targetHook = 'settings_page_fluent-mail';
 
     /**
-     * Restricted route configuration for the FluentSMTP SPA.
+     * Restricted route configuration for the WebSMTP SPA.
      *
      * @var array<int, array<string, array<int, string>|string>>
      */
@@ -59,7 +59,7 @@ class AdminSettingsNavigationHandler
     }
 
     /**
-     * Conditionally enqueue inline assets for the FluentSMTP screen.
+     * Conditionally enqueue inline assets for the WebSMTP screen.
      *
      * @param string $hookSuffix
      * @return void

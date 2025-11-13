@@ -14,7 +14,7 @@ add_filter( 'plugin_action_links_' . plugin_basename( FLUENTMAIL_PLUGIN_FILE ), 
     $links['settings'] = sprintf(
         '<a href="%s" aria-label="%s">%s</a>',
         admin_url('options-general.php?page=fluent-mail#/connections'),
-        esc_attr__( 'Go to Fluent SMTP Settings page', 'fluent-smtp' ),
+        esc_attr__( 'Go to WebSMTP Settings page', 'fluent-smtp' ),
         esc_html__( 'Settings', 'fluent-smtp' )
     );
     return $links;

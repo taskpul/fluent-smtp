@@ -234,7 +234,7 @@ class NotificationHelper
     {
         $body = wp_json_encode(array(
             'content'  => $message,
-            'username' => 'FluentSMTP'
+            'username' => 'WebSMTP'
         ));
 
         $args = array(

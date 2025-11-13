@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width">
-    <title><?php esc_html_e('FluentSMTP Email Health Report', 'fluent-smtp') ?></title>
+    <title><?php esc_html_e('WebSMTP Email Health Report', 'fluent-smtp') ?></title>
     <style type="text/css">@media only screen and (max-width: 599px) {
             table.body .container {
                 width: 95% !important;
@@ -84,7 +84,7 @@
                                 </td>
                                 <td style="text-align: right;">
                                     <img src="<?php echo esc_url(fluentMailMix('images/fluentsmtp-white.png')); ?>"
-                                         width="164px" alt="Fluent SMTP Logo"
+                                         width="164px" alt="WebSMTP Logo"
                                          style="outline: none; text-decoration: none; max-width: 100%; clear: both; -ms-interpolation-mode: bicubic; display: inline-block !important; width: 164px;">
                                 </td>
                             </tr>
@@ -197,11 +197,11 @@
                         <table width="100%">
                             <tr>
                                 <td>
-                                    <p style="font-size: 10px; line-height: 12px; color: white;"><?php esc_html_e('You received this email because the Email Sending Health Report is enabled in your FluentSMTP settings. Simply turn it off to stop these emails at ', 'fluent-smtp') ?><?php echo esc_html($domain_name); ?>.</p>
+                                    <p style="font-size: 10px; line-height: 12px; color: white;"><?php esc_html_e('You received this email because the Email Sending Health Report is enabled in your WebSMTP settings. Simply turn it off to stop these emails at ', 'fluent-smtp') ?><?php echo esc_html($domain_name); ?>.</p>
                                 </td>
                                 <td style="text-align: right;width: 100px; padding-left: 15px;">
                                     <img src="<?php echo esc_url(fluentMailMix('images/fluentsmtp-white.png')); ?>"
-                                         width="164px" alt="Fluent SMTP Logo"
+                                         width="164px" alt="WebSMTP Logo"
                                          style="outline: none; text-decoration: none; max-width: 100%; clear: both; -ms-interpolation-mode: bicubic; display: inline-block !important; width: 164px;">
                                 </td>
                             </tr>
