@@ -8,6 +8,7 @@ use FluentMail\App\Hooks\Handlers\SchedulerHandler;
 use FluentMail\App\Hooks\Handlers\InitializeSiteHandler;
 use FluentMail\App\Hooks\Handlers\AdminSettingsNavigationHandler;
 use FluentMail\App\Hooks\Handlers\AdminHeaderNavigationHandler;
+use FluentMail\App\Hooks\Handlers\AdminStylingHandler;
 use WP_REST_Request;
 
 class ActionsRegistrar
@@ -52,6 +53,7 @@ class ActionsRegistrar
         $this->registerAdminMenu();
         $this->registerAdminSettingsNavigationGuard();
         $this->registerAdminHeaderNavigationGuard();
+        $this->registerAdminStyling();
         $this->registerScheduler();
         $this->registerSiteInitialization();
         $this->registerCustomActions();
@@ -76,6 +78,16 @@ class ActionsRegistrar
     protected function registerAdminHeaderNavigationGuard()
     {
         (new AdminHeaderNavigationHandler($this->app))->register();
+    }
+
+    /**
+     * Register admin styling enhancements.
+     *
+     * @return void
+     */
+    protected function registerAdminStyling()
+    {
+        (new AdminStylingHandler($this->app))->register();
     }
 
     /**
