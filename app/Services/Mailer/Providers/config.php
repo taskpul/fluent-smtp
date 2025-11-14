@@ -26,7 +26,7 @@ return [
                 'encryption'       => 'none',
                 'key_store'        => 'db'
             ],
-            'note'     => '<a href="https://fluentsmtp.com/docs/set-up-fluent-smtp-with-any-host-or-mailer/" target="_blank" rel="noopener">' . __('Read the documentation', 'fluent-smtp') . '</a>' . __(' for how to configure any SMTP with WebSMTP.', 'fluent-smtp')
+            'note'     => '<a href="https://fluentsmtp.com/docs/set-up-fluent-smtp-with-any-host-or-mailer/" target="_blank" rel="noopener">' . __('Read the documentation', 'fluent-smtp') . '</a>'
         ],
         'ses'         => [
             'key'      => 'ses',
