@@ -36,10 +36,6 @@ msgstr ""
 msgid " for how to configure Amazon SES with WebSMTP."
 msgstr ""
 
-#: app/Services/Mailer/Providers/config.php:29
-msgid " for how to configure any SMTP with WebSMTP."
-msgstr ""
-
 #: app/Services/Mailer/Providers/config.php:176
 msgid " for how to configure Elastic Email with WebSMTP."
 msgstr ""
