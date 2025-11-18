@@ -58,12 +58,40 @@ add_action('init', function () {
     }
 
     try {
-        (new \FluentMail\Updater\FluentLicensing())->register([
+        $licenseInstance = (new \FluentMail\Updater\FluentLicensing())->register([
             'version'  => FLUENTMAIL_PLUGIN_VERSION,
             'item_id'  => '1643',
             'basename' => plugin_basename(__FILE__),
-            'api_url'  => 'https://east.webmakerr.com'
+            'api_url'  => 'https://fluentsmtp.com'
         ]);
+
+        if (!class_exists('\\FluentMail\\Updater\\LicenseSettings')) {
+            $licenseSettings = plugin_dir_path(__FILE__) . 'updater/LicenseSettings.php';
+
+            if (file_exists($licenseSettings)) {
+                require_once $licenseSettings;
+            }
+        }
+
+        if (class_exists('\\FluentMail\\Updater\\LicenseSettings')) {
+            (new \FluentMail\Updater\LicenseSettings())
+                ->register($licenseInstance, [
+                    'menu_title'   => __('WebSMTP License', 'fluent-smtp'),
+                    'page_title'   => __('WebSMTP License', 'fluent-smtp'),
+                    'title'        => __('WebSMTP License', 'fluent-smtp'),
+                    'license_key'  => __('License Key', 'fluent-smtp'),
+                    'purchase_url' => 'https://fluentsmtp.com/pricing/?utm_source=plugin&utm_medium=settings&utm_campaign=license',
+                    'account_url'  => 'https://fluentsmtp.com/account/',
+                    'plugin_name'  => 'WebSMTP'
+                ])
+                ->addPage([
+                    'type'        => 'submenu',
+                    'parent_slug' => 'options-general.php',
+                    'menu_slug'   => 'fluent-smtp-license',
+                    'page_title'  => __('WebSMTP License', 'fluent-smtp'),
+                    'menu_title'  => __('WebSMTP License', 'fluent-smtp')
+                ]);
+        }
     } catch (\Exception $exception) {
         error_log('FluentSMTP updater initialization failed: ' . $exception->getMessage());
     }
