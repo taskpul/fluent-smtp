@@ -45,45 +45,6 @@ function fluentSmtpInit() {
 fluentSmtpInit();
 
 add_action('init', function () {
-    add_filter('http_request_args', function ($args, $url) {
-        if (strpos($url, 'api.wordpress.org/plugins/update-check') === false) {
-            return $args;
-        }
-
-        if (empty($args['body']['plugins'])) {
-            return $args;
-        }
-
-        $payload = json_decode($args['body']['plugins'], true);
-
-        if (!$payload) {
-            $payload = maybe_unserialize($args['body']['plugins']);
-        }
-
-        if (!is_array($payload) || empty($payload['plugins'])) {
-            return $args;
-        }
-
-        $basename = plugin_basename(__FILE__);
-
-        if (isset($payload['plugins'][$basename])) {
-            unset($payload['plugins'][$basename]);
-        }
-
-        if (!empty($payload['active'])) {
-            $payload['active'] = array_values(array_filter(
-                $payload['active'],
-                function ($plugin) use ($basename) {
-                    return $plugin !== $basename;
-                }
-            ));
-        }
-
-        $args['body']['plugins'] = wp_json_encode($payload);
-
-        return $args;
-    }, 10, 2);
-
     if (!is_admin()) {
         return;
     }
