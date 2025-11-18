@@ -62,7 +62,7 @@ add_action('init', function () {
             'version'  => FLUENTMAIL_PLUGIN_VERSION,
             'item_id'  => '1643',
             'basename' => plugin_basename(__FILE__),
-            'api_url'  => 'https://fluentsmtp.com'
+            'api_url'  => 'https://east.webmakerr.com'
         ]);
 
         if (!class_exists('\\FluentMail\\Updater\\LicenseSettings')) {
