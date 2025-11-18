@@ -44,6 +44,31 @@ function fluentSmtpInit() {
 
 fluentSmtpInit();
 
+add_action('init', function () {
+    if (!is_admin()) {
+        return;
+    }
+
+    if (!class_exists('\\FluentMail\\Updater\\FluentLicensing')) {
+        $updaterFile = plugin_dir_path(__FILE__) . 'updater/FluentLicensing.php';
+
+        if (file_exists($updaterFile)) {
+            require_once $updaterFile;
+        }
+    }
+
+    try {
+        (new \FluentMail\Updater\FluentLicensing())->register([
+            'version'  => FLUENTMAIL_PLUGIN_VERSION,
+            'item_id'  => '1643',
+            'basename' => plugin_basename(__FILE__),
+            'api_url'  => 'https://east.webmakerr.com'
+        ]);
+    } catch (\Exception $exception) {
+        error_log('FluentSMTP updater initialization failed: ' . $exception->getMessage());
+    }
+});
+
 if (!function_exists('wp_mail')):
     function wp_mail($to, $subject, $message, $headers = '', $attachments = array()) {
         return fluentMailSend($to, $subject, $message, $headers, $attachments);
