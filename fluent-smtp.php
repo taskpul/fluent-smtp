@@ -3,9 +3,9 @@
 Plugin Name:  WebSMTP
 Plugin URI:   https://fluentsmtp.com
 Description:  The Ultimate SMTP Connection Plugin for WordPress.
-Version:      2.2.92
+Version:      1.0.0
 Author:       WebSMTP & WPManageNinja Team
-Author URI:   https://fluentsmtp.com
+Author URI:   https://webmakerr.com
 License:      GPL2
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:  fluent-smtp
