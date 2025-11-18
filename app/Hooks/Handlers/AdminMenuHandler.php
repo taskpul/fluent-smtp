@@ -9,6 +9,8 @@ use FluentMail\Includes\Core\Application;
 use FluentMail\App\Services\Mailer\Manager;
 use FluentMail\Includes\Support\Arr;
 use FluentMail\App\Services\TransStrings;
+use FluentMail\Updater\FluentLicensing;
+use FluentMail\Updater\LicenseSettings;
 
 class AdminMenuHandler
 {
@@ -122,6 +124,12 @@ class AdminMenuHandler
 
     public function renderApp()
     {
+        if (!$this->isLicenseValid()) {
+            $this->renderLicenseContent();
+
+            return;
+        }
+
         $dailyTaskHookName = 'fluentmail_do_daily_scheduled_tasks';
 
         if (!wp_next_scheduled($dailyTaskHookName)) {
@@ -133,6 +141,10 @@ class AdminMenuHandler
 
     public function enqueueAssets()
     {
+        if (!$this->isLicenseValid()) {
+            return;
+        }
+
         add_action('wp_print_scripts', function () {
             $isSkip = apply_filters('fluentsmtp_skip_no_conflict', false);
 
@@ -236,6 +248,34 @@ class AdminMenuHandler
                 '<a href="https://wordpress.org/support/plugin/fluent-smtp/reviews/?filter=5" target="_blank" rel="noopener noreferrer">'. esc_html__('Write a review ★★★★★', 'fluent-smtp') .'</a>'
             );
         });
+    }
+
+    protected function isLicenseValid()
+    {
+        if (!class_exists(FluentLicensing::class)) {
+            return false;
+        }
+
+        try {
+            $licenseInstance = FluentLicensing::getInstance();
+        } catch (\Exception $exception) {
+            return false;
+        }
+
+        $licenseStatus = $licenseInstance->getStatus();
+
+        return !empty($licenseStatus['status']) && $licenseStatus['status'] === 'valid';
+    }
+
+    protected function renderLicenseContent()
+    {
+        if (class_exists(LicenseSettings::class)) {
+            $licenseSettings = LicenseSettings::getInstance();
+            $licenseSettings->renderLicensingContent();
+            return;
+        }
+
+        echo '<div class="notice notice-error"><p>' . esc_html__('Please activate your WebSMTP license to continue.', 'fluent-smtp') . '</p></div>';
     }
 
     protected function getMailerSettings()
