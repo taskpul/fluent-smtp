@@ -19,8 +19,8 @@ spl_autoload_register(function($class) {
     $path = plugin_dir_path(__FILE__);
     
     $file = str_replace(
-        ['FluentMail', '\\', '/App/', '/Includes/'],
-        ['', DIRECTORY_SEPARATOR, 'app/', 'includes/'],
+        ['FluentMail', '\\', '/App/', '/Includes/', '/Updater/'],
+        ['', DIRECTORY_SEPARATOR, 'app/', 'includes/', 'updater/'],
         $class
     );
 
